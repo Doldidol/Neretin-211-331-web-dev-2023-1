@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-center align-items-center mx-auto">
+        <h1>Введите номер телефона )</h1>
+    </div>
+    {% if error %}
+    <div class="alert alert-danger mt-4">{{ error }}</div>
+    {% endif %}
+    <form method="POST">
+        {% if number %}
+        <p>Верно </p>
+        <div class="alert alert-success mt-4">{{ number }}</div>
+        {% endif %}
+        <div class="form-group mt-4">
+            <label for="phone">Номер телефона:</label><p></p>
+            <input type="text" name="phone" id="phone" class="form-control is-invalid"
+                placeholder="Введите номер телефона" value="{{ request.form.phone }}">
+            {% if error %}
+            <p></p>
+            <div class="invalid-feedback">{{ error }}</div>
+            <p></p>
+            {% endif %}
+        </div>
+        <p></p>
+        <button type="submit" class="btn btn-primary">Проверить</button>
+    </form>
+</div>
+{% endblock %}
